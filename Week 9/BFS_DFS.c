@@ -57,7 +57,7 @@ int main(){
     printf("\nIf user wants to increase or decrease vertex count should enter statically \n");
     printf("No. of vertices are %d\n",v);
     int ch;
-    int i, j;
+    int i, j,start;
 
     int Ar[v][v];
     int visited[v];
@@ -96,16 +96,18 @@ int main(){
     }
     switch (ch){
     case 1:
-        BFS(Ar, visited, 0);
+        printf("Enter the starting node ");
+        scanf("%d",&start);
+        BFS(Ar, visited, start);
         break;
 
     case 2:
-        DFS(Ar, visited, 0);
+        DFS(Ar, visited, start);
         break;
 
     case 3:
-        BFS(Ar, visited, 0);
-        DFS(Ar, visited, 0);
+        BFS(Ar, visited, start);
+        DFS(Ar, visited, start);
         break;
 
     default:
