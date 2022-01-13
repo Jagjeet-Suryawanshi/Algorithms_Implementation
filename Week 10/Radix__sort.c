@@ -1,9 +1,8 @@
 #include <stdio.h>
-int digit, i;
+#define m 50000 
 
-void radix_Sort(int arr[10], int n, int digits)      /*Radix sort*/
+void radix_Sort(int arr[m], int n, int digits)      /*Radix sort*/
 {
-
     int i;
 
     int R_ar[n];
@@ -13,7 +12,7 @@ void radix_Sort(int arr[10], int n, int digits)      /*Radix sort*/
 
         int index_ar[10] = {0};
 
-        for (i = 0; i < n; i++)
+       for (i = 0; i < n; i++)
 
             index_ar[(arr[i] / digits) % 10]++;
 
@@ -38,19 +37,20 @@ void radix_Sort(int arr[10], int n, int digits)      /*Radix sort*/
         printf("\nAfter sorting: ");
     for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
+        printf("\n");
 }
 
 int main()
 {
     int n, i, digits, x, largest;
-    int ar[n];
     printf("\nEnter the number of elements want to sort : ");
     scanf("%d", &n);
+    int ar[n];
 
     printf("\nEnter the number in the array ");
     for (i = 0; i < n; i++)
         scanf("%d", &ar[i]);
-
+    
     largest = ar[0];
     for (i = 1; i < n; i++)         /*Maximum*/
     {
@@ -61,25 +61,21 @@ int main()
     }
 
     printf("Largest = %d", largest);
-
-    if (largest > 9 && largest < 100)
-    {
-        printf("\nTwo digit in largest number\n");
-        digits = 2;
-    }
-    if (largest > 99 && largest < 999)
-    {
-        printf("\nThree digits in largest number\n");
-        digits = 3;
-    }
+    
     if (largest < 10)
     {
-        printf("\nOne digit in largest number\n");
         digits = 1;
     }
-    if (largest > 999)
+    else if (largest > 9 && largest <= 100)
     {
-        printf("\nFour digits in largest number\n");
+        digits = 2;
+    }
+    else if (largest > 99 && largest <= 999)
+    {
+        digits = 3;
+    }
+    else 
+    { 
         digits = 4;
     }
 
