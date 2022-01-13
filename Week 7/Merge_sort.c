@@ -1,4 +1,3 @@
-
 /*Implementation of Merge sort*/
 
 #include <stdio.h>
@@ -16,13 +15,12 @@ void mergesort(int arr[], int i, int j)
         merge_array(arr, i, mid, mid + 1, j);
     }
 }
-void merge_array(int arr[], int m1, int j1, int m2, int j2)
-{
-    int temp[50];
-    int i, j, k;
+void merge_array(int arr[], int m1, int j1, int m2, int j2){
+
+    int temp[50] = {0};
+    int i, j, k = 0;
     i = m1;
     j = m2;
-    k = 0;
     while (i <= j1 && j <= j2)
     {
         if (arr[i] < arr[j])
@@ -30,6 +28,7 @@ void merge_array(int arr[], int m1, int j1, int m2, int j2)
         else
             temp[k++] = arr[j++];
     }
+
     while (i <= j1)
         temp[k++] = arr[i++];
     while (j <= j2)
@@ -38,16 +37,18 @@ void merge_array(int arr[], int m1, int j1, int m2, int j2)
         arr[i] = temp[j];
 }
 
-int main()
-{
-    int arr[40], n, i;
-    printf("Enter the number  of elements want to sort:");
+int main(){
+
+    int arr[40] = {0}, n = 0, i = 0;
+    printf("Enter the number  of elements want to sort: ");
     scanf("%d", &n);
-    printf("Enter the elements to the array:");
+    printf("Enter the elements to the array: ");
+
     for (i = 0; i < n; i++)
         scanf("%d", &arr[i]);
     mergesort(arr, 0, n - 1);
     printf("\nSorted array is :");
+
     for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
     return 0;
