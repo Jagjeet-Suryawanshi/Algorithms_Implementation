@@ -1,10 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 
 void exit();
-struct node
-{
+struct node{
+
     int info;
     struct node *lchild;
 
@@ -15,13 +14,13 @@ void find(int item, struct node **par, struct node **loc)
 {
     struct node *ptr, *ptrsave;
 
-    if (root == NULL) /*tree empty*/
+    if (root == NULL) 
     {
         *loc = NULL;
         *par = NULL;
         return;
     }
-    if (item == root->info) /*item is at root*/
+    if (item == root->info) 
     {
         *loc = root;
         *par = NULL;
@@ -47,13 +46,13 @@ void find(int item, struct node **par, struct node **loc)
             ptr = ptr->lchild;
         else
             ptr = ptr->rchild;
-    }            /*End of while */
-    *loc = NULL; /*item not found*/
+    }            
+    *loc = NULL; 
     *par = ptrsave;
 
 } /*End of find()*/
 
-void insert(int item)
+void insert(int item)           //Insert
 {
     struct node *tmp, *parent, *location;
     find(item, &parent, &location);
@@ -82,31 +81,31 @@ void insert(int item)
 
 void case_a(struct node *par, struct node *loc)
 {
-    if (par == NULL) /*item to be deleted is root node*/
+    if (par == NULL) 
         root = NULL;
     else if (loc == par->lchild)
         par->lchild = NULL;
     else
         par->rchild = NULL;
-} /*End of case_a()*/
+} 
 
 void case_b(struct node *par, struct node *loc)
 {
     struct node *child;
 
     /*Initialize child*/
-    if (loc->lchild != NULL) /*item to be deleted has lchild */
+    if (loc->lchild != NULL) 
         child = loc->lchild;
-    else /*item to be deleted has rchild */
+    else 
         child = loc->rchild;
 
-    if (par == NULL) /*Item to be deleted is root node*/
+    if (par == NULL) 
         root = child;
-    else if (loc == par->lchild) /*item is lchild of its parent*/
+    else if (loc == par->lchild) 
         par->lchild = child;
-    else /*item is rchild of its parent*/
+    else 
         par->rchild = child;
-} /*End of case_b()*/
+} 
 
 void case_c(struct node *par, struct node *loc)
 {
@@ -140,8 +139,9 @@ void case_c(struct node *par, struct node *loc)
     suc->lchild = loc->lchild;
     suc->rchild = loc->rchild;
 } /*End of case_c()*/
-int del(int item)
-{
+
+int del(int item){     //Delete
+
     struct node *parent, *location;
     if (root == NULL)
     {
@@ -168,7 +168,7 @@ int del(int item)
     if (location->lchild != NULL && location->rchild != NULL)
         case_c(parent, location);
     free(location);
-} /*End of del()*/
+} 
 
 void display(struct node *ptr, int level)
 {
@@ -186,9 +186,9 @@ void display(struct node *ptr, int level)
     }
 }
 
-main()
+int main()
 {
-    int choice, num, sum;
+    int choice = 0, num = 0, sum = 0;
     root = NULL;
     while (1)
     {
@@ -224,11 +224,12 @@ main()
             break;
 
         case 4:
-            exit();
+            exit(0);
             break;
 
         default:
             printf("Wrong choice\n");
         }
     }
+       return 0;
 }
