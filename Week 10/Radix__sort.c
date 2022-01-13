@@ -1,14 +1,12 @@
 #include <stdio.h>
 #define m 50000 
 
-void radix_Sort(int arr[m], int n, int digits)      /*Radix sort*/
-{
-    int i;
+void radix_Sort(int arr[m], int n, int digits){        /*Radix sort*/
+    int i = 0;
 
     int R_ar[n];
 
-    while (digits > 0)
-    {
+    while (digits > 0){
 
         int index_ar[10] = {0};
 
@@ -40,9 +38,10 @@ void radix_Sort(int arr[m], int n, int digits)      /*Radix sort*/
         printf("\n");
 }
 
-int main()
-{
-    int n, i, digits, x, largest;
+int main(){
+
+    int n , i ,digits , largest;
+    n = i = digits = largest = 0;
     printf("\nEnter the number of elements want to sort : ");
     scanf("%d", &n);
     int ar[n];
