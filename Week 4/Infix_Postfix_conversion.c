@@ -3,20 +3,19 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct stack
-{
-    int size;
-    int top;
+struct stack{
+
+    int size, top;
     char *arr;
 };
 
-int stackTop(struct stack *sp)
-{
+int stackTop(struct stack *sp){
+
     return sp->arr[sp->top];
 }
 
-int isEmpty(struct stack *ptr)
-{
+int isEmpty(struct stack *ptr){
+
     if (ptr->top == -1)
     {
         return 1;
@@ -27,8 +26,8 @@ int isEmpty(struct stack *ptr)
     }
 }
 
-int isFull(struct stack *ptr)
-{
+int isFull(struct stack *ptr){
+
     if (ptr->top == ptr->size - 1)
     {
         return 1;
@@ -39,8 +38,8 @@ int isFull(struct stack *ptr)
     }
 }
 
-void push(struct stack *ptr, char val)
-{
+void push(struct stack *ptr, char val){
+
     if (isFull(ptr))
     {
         printf("Stack Overflow! Cannot push %d to the stack\n", val);
@@ -52,8 +51,8 @@ void push(struct stack *ptr, char val)
     }
 }
 
-char pop(struct stack *ptr)
-{
+char pop(struct stack *ptr){
+
     if (isEmpty(ptr))
     {
         printf("Stack Underflow! Cannot pop from the stack\n");
@@ -66,8 +65,8 @@ char pop(struct stack *ptr)
         return val;
     }
 }
-int precedence(char ch)
-{
+int precedence(char ch){
+
     if (ch == '*' || ch == '/')
         return 3;
     else if (ch == '+' || ch == '-')
@@ -76,22 +75,24 @@ int precedence(char ch)
         return 0;
 }
 
-int isOperator(char ch)
-{
+int isOperator(char ch){
+
     if (ch == '+' || ch == '-' || ch == '*' || ch == '/')
         return 1;
     else
         return 0;
 }
-char *infixToPostfix(char *infix)
-{
+
+char *infixToPostfix(char *infix){
+
     struct stack *sp = (struct stack *)malloc(sizeof(struct stack));
     sp->size = 10;
     sp->top = -1;
     sp->arr = (char *)malloc(sp->size * sizeof(char));
+
     char *postfix = (char *)malloc((strlen(infix) + 1) * sizeof(char));
-    int i = 0; // Track infix traversal
-    int j = 0; // Track postfix addition
+    int i = 0; // Track infix and postfix traversal
+    int j = 0;  
     while (infix[i] != '\0')
     {
         if (!isOperator(infix[i]))
@@ -122,12 +123,14 @@ char *infixToPostfix(char *infix)
     postfix[j] = '\0';
     return postfix;
 }
-int main()
-{
-    char infix[8];
-    printf("Enter the expression");
+
+int main(){
+
+    char infix[8] = {0};
+
+    printf("Enter the expression: ");
     gets(infix);
-    printf("postfix is %s", infixToPostfix(infix));
+    printf("\npostfix is %s", infixToPostfix(infix));
 
     return 0;
 }
