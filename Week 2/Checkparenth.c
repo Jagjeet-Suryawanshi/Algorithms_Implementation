@@ -1,7 +1,6 @@
 //Program to check the parenthesis
 
 #include <stdio.h>
-#include <conio.h>
 #include <string.h>
 #define MAX 80
 
@@ -18,13 +17,13 @@ char pop()
 	return stack[a--];
 }
 
-int main()
-{
+int main(){
+
 	char strin[MAX];
-	char ch;
+	char ch = '\0';
 	int k = 1, j = 0;
 
-	printf("\nEnter the values as string:-");
+	printf("\nEnter the [] or {} or () as string:- ");
 	scanf("%s", strin);
 
 	while (strin[j] != '\0')
