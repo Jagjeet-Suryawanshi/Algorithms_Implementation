@@ -6,30 +6,34 @@
 void quick_sort(int[], int, int);
 int partition(int[], int, int);
 
-int main()
-{
+int main(){
 
-    int ar[50], n, i;
+    int ar[50] = {0}, n = 0, i = 0;
     clock_t t;
-    printf("Enter Total number of elements want to sort :");
+
+    printf("Enter Total number of elements want to sort : ");
     scanf("%d", &n);
-    printf("\nEnter array elements:");
+    printf("\nEnter array elements: ");
+
     for (i = 0; i < n; i++)
         scanf("%d", &ar[i]);
+
     t = clock();
     quick_sort(ar, 0, n - 1);
     t = clock() - t;
+
     double time_taken = ((double)t) / CLOCKS_PER_SEC;
     printf("\nquick_sort() took %f seconds to execute \n", time_taken);
-    printf("\nArray after sorting:");
+    printf("\nArray after sorting: ");
+
     for (i = 0; i < n; i++)
         printf("%d ", ar[i]);
     return 0;
 }
 
-void quick_sort(int ar[], int l, int u)
-{
-    int mid;
+void quick_sort(int ar[], int l, int u){       /*Quick_sort function*/
+
+    int mid = 0;
     if (l < u)
     {
         mid = partition(ar, l, u);
@@ -38,9 +42,9 @@ void quick_sort(int ar[], int l, int u)
     }
 }
 
-int partition(int ar[], int l, int u)
-{
-    int v, i, j, temp;
+int partition(int ar[], int l, int u){
+
+    int v=0, i=0, j=0, temp=0;
     v = ar[l];
     i = l;
     j = u + 1;
