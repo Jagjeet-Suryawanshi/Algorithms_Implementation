@@ -4,10 +4,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-int Str_check(char *s, int len){
+int Str_check(char *s, int len){       //string matching
 
-	char *s1, *s2;
-	s1 = s2 = NULL;
+	char *s1 = NULL, *s2 = NULL;
 	s1 = s;
 	s2 = s + len;
 	int outcome = 1;
@@ -27,15 +26,14 @@ int Str_check(char *s, int len){
 
 void L_Pallindrome(char *str){        /*LP function*/
 
-	int i, j, len, max;
-	i, j, len, max = 0;
+	int i = 0, j = 0, len = 0, max = 0;
 
-	char *ptr1, *ptr2, *ptr;
+	char *ptr;
 	char *lpd;
-	*ptr1, *ptr2, *ptr, *lpd = '\0';
+	*ptr , *lpd = '\0';
 
 	len = strlen(str);
-	lpd = (char *)malloc(sizeof(char)); //len+1  (0+1)*
+	lpd = (char *)malloc(sizeof(char));
 
 	for (i = 0; i < len; i++)
 	{
@@ -56,8 +54,8 @@ void L_Pallindrome(char *str){        /*LP function*/
 	else
 	{
 		memcpy(lpd, ptr, max);
-		lpd[max] = '\0';
-	}
+		lpd[max] = '\0';                 //terminating condition
+	} 
 	printf("\nLongest Pallindrome  = ");
 	printf(lpd);
 }
